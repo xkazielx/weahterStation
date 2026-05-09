@@ -1,0 +1,24 @@
+name: Run Python Script
+
+on:
+  push:        # Runs when you push to the repo
+  workflow_dispatch:  # Allows manual run from Actions tab
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'  # You can specify '3.10', '3.11', etc.
+
+      # Step 3: Run the Python script
+      - name: Run script
+        run: python main.py
